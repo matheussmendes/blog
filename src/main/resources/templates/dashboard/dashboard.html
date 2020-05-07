@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="pt-BR" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns="http://www.w3.org/1999/xhtml"
+      layout:decorate="layout/layout">
+
+    <section layout:fragment="corpo">
+
+        <div class="row justify-content-center align-items-center" >
+            <div class="card border-primary mb-3" style="min-width: 18rem; max-width: 18rem;">
+                <div style="text-align: center; font-weight: bold" class="card-header">Posts</div>
+                <div class="card-body text-primary">
+                    <h5 style="text-align: center" class="card-title" th:text="${quantidadeDePosts}">Título de Card Primary</h5>
+                </div>
+            </div>
+
+            <div class="card border-primary mb-3" style="margin-left: 8px; min-width: 18rem; max-width: 18rem;">
+                <div style="text-align: center; font-weight: bold" class="card-header">Comentários</div>
+                <div class="card-body text-primary">
+                    <h5 style="text-align: center" class="card-title" th:text="${quantidadeDeComentarios}">Título de Card Primary</h5>
+                </div>
+            </div>
+        </div>
+    </section>
+
+</html>

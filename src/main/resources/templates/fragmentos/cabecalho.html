@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="pt-BR" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+    <nav th:fragment="cabecalho" class="navbar navbar-dark bg-primary">
+        <div>
+            <h5 class="row"> <a th:href="@{/postagens}" class="navbar-brand" href="#" style="margin-left: 5px">MyBlog </a>
+                <img th:src="@{/imagens/imgBlog.png}" style="margin-left: 5px" width="30" height="30">
+            </h5>
+        </div>
+       <a style="text-decoration: none" th:href="@{/dashboard}"><span style="color: white; font-weight: bold;" th:text="${nomeUsuario}"></span></a>
+        <div class="row">
+                <a  th:if="${nomeUsuario} == null" th:href="@{/logar}" style="margin-right: 10px; color: white" class="btn " role="button">Login</a>
+
+            <a th:if="${nomeUsuario} != null" style="margin-right: 10px; color: white" class="btn btn-info" th:href="@{/cadastro}" role="button">Novo Post</a>
+            <a th:if="${nomeUsuario} != null" th:href="@{/postagensDoUsuario}" style="margin-right: 10px; color: white" class="btn btn-secondary" role="button">Meus Posts</a>
+            <a th:href="@{/postagens}"  style="margin-right: 10px; color: white" class="btn btn-warning" role="button">Todos os Posts</a>
+            <form th:if="${nomeUsuario} != null" th:action="@{/logout}" method="post">
+                <button style="margin-right: 10px; " type="submit" class="btn btn-danger">Sair</button>
+            </form>
+        </div>
+    </nav>
+
+</html>

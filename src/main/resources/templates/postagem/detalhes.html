@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="pt-BR" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns="http://www.w3.org/1999/xhtml"
+      layout:decorate="layout/layout">
+
+<section  layout:fragment="corpo" class="container" style="margin-top: 80px; width: 70%">
+
+    <div>
+        <span class="alarm"></span>
+        <div class="card"  style="margin:10px;">
+            <h5 class="card-header" th:text="${postagem.getTitulo()}"></h5>
+            <div class="card-body">
+                <h5 class="card-title" th:text="${postagem.getUsuario().getNome()}">Special title treatment</h5>
+                <p th:text="${postagem.getTexto()}"></p>
+                <a  class="btn btn-success" href="javascript:history.back()" role="button">Voltar</a>
+                <a th:if="${exibeBotao}" th:href="@{/editar/{id} (id = ${postagem.getId()})}" class="btn btn-primary">Editar</a>
+                <a th:if="${exibeBotao}" th:href="@{/confirmarExclusao/{id} (id = ${postagem.getId()})}" class="btn btn-danger">Excluir</a>
+            </div>
+        </div>
+    </div>
+
+    <section th:if="${nomeUsuario} != null" sec:authorize="isAuthenticated()"   class="container" style="margin-top: 40px">
+
+        <form  th:action="@{/comentar}" th:object="${comentario}" method="POST">
+            <div>
+                <div class="form-group ">
+                    <label style="font-weight: bold" for="exampleFormControlInput1">Seu e-mail</label>
+                    <input th:maxlength="50" required th:field="*{email}" type="email" class="form-control" id="exampleFormControlInput1" placeholder="nome@exemplo.com">
+                </div>
+                <div class="form-group ">
+                    <label style="font-weight: bold"  for="exampleInputEmail1" >Seu nome</label>
+                    <input th:maxlength="50" required th:field="*{autor}"  type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                </div>
+                <div class="form-group ">
+                    <label style="font-weight: bold"  for="exampleFormControlTextarea2">Faça seu comentário</label>
+                    <textarea required th:field="*{opiniao}"  class="form-control" id="exampleFormControlTextarea2" rows="3"></textarea>
+                </div>
+                <input type="hidden" th:field="*{postagem}" th:value="${postagem.getId()}">
+                <div style="text-align: center; margin-bottom: 10px;"><button  type="submit" class="btn btn-primary">Comentar</button></div>
+
+            </div>
+        </form>
+    </section>
+
+    <section style="margin-top: 40px;" class="container">
+        <div th:each="co : ${comentarios}">
+            <span style="font-weight: bold" th:text="${co.getAutor()}"></span> |
+            <span th:text="${#temporals.format(co.getData(), 'dd/MM/yyyy')}"></span>
+            <p style="font-style:italic" th:text="${co.getOpiniao()}"></p>
+            <hr>
+        </div>
+    </section>
+
+</section>
+
+</html>

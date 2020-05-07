@@ -1,0 +1,3 @@
+ - determinar quantidade de comentários para cada postagem;
+ - exibir em dashboard a quantidade de postagens bem como de comentários para o usuário logado;
+ - restringir o acesso às edições e às exclusões apenas aos respectivos donos;

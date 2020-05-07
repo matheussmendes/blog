@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="pt-BR" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns="http://www.w3.org/1999/xhtml"
+      layout:decorate="layout/layout">
+
+    <section layout:fragment="corpo" style="margin-top: 50px;">
+        <div class="container">
+            <form th:action="@{/salvar}" method="POST" th:object="${postagem}">
+
+            <input th:field="*{id}" type="hidden">
+
+                <div class="form-group">
+                    <label for="exampleInputEmail1" style="font-weight: bold">Título</label>
+                    <input th:maxlength="50"  required th:field="*{titulo}" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                    <small id="emailHelp" class="form-text text-muted">Dica: Dê um título expressivo.</small>
+                    <div class="valid-feedback">
+                        Looks good!
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="exampleFormControlTextarea1" style="font-weight: bold">Texto</label>
+                    <textarea required th:field="*{texto}" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                </div>
+
+                <div class="row">
+                    <a style="margin-right: 5px; margin-left: 13px;" class="btn btn-success" href="javascript:history.back()" role="button">Voltar</a>
+                    <button type="submit" class="btn btn-primary">Publicar</button>
+                </div>
+
+            </form>
+
+
+        </div>
+
+    </section>
+
+</html>

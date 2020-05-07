@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="pt-BR" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns="http://www.w3.org/1999/xhtml"
+      layout:decorate="layout/layout">
+
+    <section layout:fragment="corpo">
+
+        <div>
+            <span class="alarm"></span>
+            <div class="card"  style="margin:10px;">
+                <h5 class="card-header" th:text="${postagem.getTitulo()}"></h5>
+                <div class="card-body">
+                    <h5 class="card-title" th:text="${postagem.getUsuario().getNome()}">Special title treatment</h5>
+                    <p class="card-text" th:text="${postagem.getTexto()}">With supporting text below as a natural lead-in to additional content.</p>
+                   <div style="text-align: center">
+                        <h5 style="margin-bottom: 20px">Tem certeza que deseja apagar este post?</h5>
+                        <a  class="btn btn-success" href="javascript:history.back()" role="button">Não</a>
+                        <a th:href="@{/apagar/{id} (id = ${postagem.getId()})}" class="btn btn-danger">Sim</a>
+                   </div>
+                   </div>
+            </div>
+        </div>
+
+    </section>
+
+
+</html>

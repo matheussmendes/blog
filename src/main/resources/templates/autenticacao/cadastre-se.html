@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="pt-BR" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns="http://www.w3.org/1999/xhtml"
+      layout:decorate="layout/layout">
+
+<section layout:fragment="corpo">
+
+    <form th:action="@{/registrar}" method="POST" th:object="${usuario}" >
+        <div class="container">
+
+            <div class="form-group col-md-12">
+                <label style="font-weight: bold" for="nome">Nome</label>
+                <input th:maxlength="50" th:field="*{nome}" size="30" type="text" class="form-control" id="nome" aria-describedby="emailHelp" placeholder="Seu email">
+                <small id="emailHelp" class="form-text text-muted">Nunca vamos compartilhar seu email, com ninguém.</small>
+            </div>
+
+            <div class="form-group col-md-12">
+                <label style="font-weight: bold" for="ema">E-mail</label>
+                <input th:maxlength="50" th:field="*{email}" size="30" type="text" class="form-control" id="ema" aria-describedby="emailHelp" placeholder="Seu nome">
+            </div>
+            <div class="form-group col-md-12">
+                <label style="font-weight: bold" for="sen">Senha</label>
+                <input th:maxlength="20" th:field="*{senha}" type="password" class="form-control" id="sen" placeholder="Senha" size="30">
+                <small id="emailHelp" class="form-text text-muted">Crie uma senha de no mínimo 5 caracteres</small>
+            </div>
+            <div style="text-align: center">
+                <button  type="submit" class="btn btn-primary">Registrar</button>
+            </div>
+
+            <div  style="margin-top: 40px; text-align: center">
+                <p><a th:href="@{/logar}" style="text-decoration: none">Já tenho cadastro</a></p>
+            </div>
+
+        </div>
+    </form>
+</section>
+
+</html>
